@@ -1,2 +1,1 @@
-# crud-biblioteca
-Projeto interdisciplinar SW-I, IW-II, BD - CRUD de biblioteca
+# Projeto interdisciplinar SW-I, IW-II, BD - CRUD de biblioteca
