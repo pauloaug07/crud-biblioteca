@@ -18,7 +18,7 @@ CREATE TABLE autor (
 
 CREATE TABLE livro (
     id_livro int AUTO_INCREMENT UNIQUE PRIMARY KEY,
-    isbn varchar(13),
+    isbn varchar(14),
     titulo varchar(200),
     ano_publicacao year,
     id_editora int,
