@@ -23,12 +23,14 @@ CREATE TABLE livro (
     ano_publicacao year,
     id_editora int,
     id_genero int,
+    status ENUM('disponível', 'emprestado') DEFAULT 'disponível',
     FOREIGN KEY (id_editora) REFERENCES editora(id_editora),
     FOREIGN KEY (id_genero) REFERENCES genero(id_genero)
 );
 
 CREATE TABLE administrador (
     id_adm int AUTO_INCREMENT UNIQUE PRIMARY KEY,
+    cpf varchar(11) UNIQUE,
     nome varchar(200),
     email varchar(100),
     senha varchar(100)
@@ -38,20 +40,25 @@ CREATE TABLE funcionario (
     email varchar(100),
     nome varchar(200),
     id_funcionario int AUTO_INCREMENT UNIQUE PRIMARY KEY,
+    cpf varchar(11) UNIQUE,
     senha varchar(100)
 );
 
 CREATE TABLE usuario (
     nome varchar(200),
     id_usuario int AUTO_INCREMENT UNIQUE PRIMARY KEY,
+    cpf varchar(11) UNIQUE,
     senha varchar(100),
-    email varchar(100)
+    email varchar(100),
+    status ENUM('ativo', 'bloqueado') DEFAULT 'ativo'
 );
 
 CREATE TABLE emprestimo (
     id_emprestimo int AUTO_INCREMENT UNIQUE PRIMARY KEY,
     data_emprestimo date,
     data_devolucao date,
+    status_devolucao ENUM('pendente', 'confirmada', 'atrasada') DEFAULT 'pendente',
+    status ENUM('solicitado', 'aprovado', 'em andamento', 'concluído') DEFAULT 'solicitado',
     id_livro int,
     id_funcionario int,
     id_usuario int,
